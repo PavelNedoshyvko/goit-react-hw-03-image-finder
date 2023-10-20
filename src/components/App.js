@@ -6,8 +6,6 @@ import { ImageGallery } from "./ImageGallery/ImageGallery";
 import { ButtonLoadMore } from "./Button/Button";
 import { Loader } from "./Loader/Loader";
 
-
-
 export class App extends Component {
 
 	state = {

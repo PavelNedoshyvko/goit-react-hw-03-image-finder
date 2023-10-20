@@ -1,7 +1,7 @@
-import { Form, Formik } from 'formik';
-import { FieldInput, FormLabel, Header, SearchBtn } from './Searchbar.styled';
+import { Formik } from 'formik';
+import { FieldInput, FormLabel, Header, SearchBtn, SearchForm } from './Searchbar.styled';
 import toast from 'react-hot-toast';
-
+import { ImSearch } from "react-icons/im";
 
 export const SearchBar = ({ onAddSearchQuery }) => {
 	return (
@@ -24,11 +24,11 @@ export const SearchBar = ({ onAddSearchQuery }) => {
 					};
 				}}
 			>
-				<Form>
+				<SearchForm>
 					<FormLabel htmlFor="searchQuery"></FormLabel>
-					<FieldInput id="searchQuery" name="searchQuery" placeholder="Search images and photos" />
-					<SearchBtn type="submit">Search</SearchBtn>
-				</Form>
+					<FieldInput id="searchQuery" name="searchQuery" placeholder="Search images and photos"/>
+					<SearchBtn type="submit"><ImSearch/></SearchBtn>
+				</SearchForm>
 			</Formik>
 		</Header>
 	);
