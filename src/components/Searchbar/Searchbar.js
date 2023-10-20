@@ -1,5 +1,5 @@
-import { Formik } from 'formik';
-import { FieldInput, FormContacts, FormLabel, Header, SearchBtn } from './Searchbar.styled';
+import { Form, Formik } from 'formik';
+import { FieldInput, FormLabel, Header, SearchBtn } from './Searchbar.styled';
 import toast from 'react-hot-toast';
 
 
@@ -12,17 +12,23 @@ export const SearchBar = ({ onAddSearchQuery }) => {
 				}}
 				onSubmit={(value, actions) => {
 					if (value.searchQuery === '') {
-						toast.error('Please fill in the search field.')
-					}
-					onAddSearchQuery(value);
-					actions.resetForm();
+						toast.error('Please fill in the search field.', {
+							style: {
+								fontSize: '18px',
+								padding: '16px',
+							},
+						})
+					} else {
+						onAddSearchQuery(value);
+						actions.resetForm();
+					};
 				}}
 			>
-				<FormContacts>
+				<Form>
 					<FormLabel htmlFor="searchQuery"></FormLabel>
 					<FieldInput id="searchQuery" name="searchQuery" placeholder="Search images and photos" />
 					<SearchBtn type="submit">Search</SearchBtn>
-				</FormContacts>
+				</Form>
 			</Formik>
 		</Header>
 	);

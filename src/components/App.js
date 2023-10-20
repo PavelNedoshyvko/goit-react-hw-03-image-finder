@@ -20,7 +20,7 @@ export class App extends Component {
 	};
 
 	async componentDidUpdate(prevProps, prevState) {
-		if (prevState.searchQuery !== this.state.searchQuery || 
+		if (prevState.searchQuery !== this.state.searchQuery ||
 			prevState.page !== this.state.page)
 		{
 			try {
@@ -31,21 +31,37 @@ export class App extends Component {
 							images: [...prevState.images, ...hits],
 						}
 					});
-				this.setState({ totalImages: totalHits, })
-				if (this.state.images.length === 0) {
-					toast.success("Sorry, there are no images matching your search query. Please try again.")
-		};
+				this.setState({ totalImages: totalHits, });
+
+				if (Math.ceil(totalHits / 12) === this.state.page) {
+					toast.success("We're sorry, but you've reached the end of search results.",
+					{
+							style: {
+								fontSize: '18px',
+								padding: '16px',
+								position: 'center-center',
+							},
+						})
+				};
+
+				if (hits.length === 0) {
+					toast.success("Sorry, there are no images matching your search query. Please try again.",
+					{
+							style: {
+								fontSize: '18px',
+								padding: '16px',
+								position: 'center-center',
+							},
+						})
+				};
 
 			} catch (error) {
-					this.setState({ error: true, });
+				this.setState({ error: true, });
+				
 			} finally {
 				this.setState({ loading: false });
 			}
 		};
-		if (Math.ceil(this.state.totalImages / 12) === this.state.page) {
-					toast.success("We're sorry, but you've reached the end of search results.")
-		};
-		
 	};
 
 	addSearchQuery = (value) => {

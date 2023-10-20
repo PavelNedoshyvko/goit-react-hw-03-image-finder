@@ -1,4 +1,4 @@
-import { ErrorMessage, Field, Form } from "formik";
+import { ErrorMessage, Field } from "formik";
 import styled from "styled-components";
 
 export const Header = styled.div`
@@ -14,12 +14,7 @@ position: fixed;
 	z-index: 1;
 `;
 
-export const FormContacts = styled(Form)`
-
-`;
-
 export const FormLabel = styled.label`
-/* margin-bottom: 4px; */
   font-size: 20px;
   line-height: 1.17;
   letter-spacing: 0.01em;

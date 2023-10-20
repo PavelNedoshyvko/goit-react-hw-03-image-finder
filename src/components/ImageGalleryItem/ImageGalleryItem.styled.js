@@ -4,8 +4,6 @@ export const GalleryImage = styled.img`
 width: 100%;
 height: 300px;
 	object-fit:cover;
-	scale: 1;
-	
 `;
 
 export const GalleryItemWrap = styled.div`
